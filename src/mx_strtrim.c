@@ -29,7 +29,7 @@ char *mx_strtrim(const char *str){
 		result[j] = str[i];
 		j++;
 	}
-	result = (char *)realloc(result, sizeof(char) * mx_strlen(result) + 1);
+	result = (char *)mx_realloc(result, sizeof(char) * mx_strlen(result) + 1);
 return result;
 }
 // int main(){

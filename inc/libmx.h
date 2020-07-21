@@ -74,5 +74,6 @@ bool mx_islower(int c);
 int mx_toupper(int c);
 int mx_strncmp(const char *s1, const char *s2, int n);
 void mx_print_unicode(wchar_t c);
+int mx_nbr_length(int num);
 
 #endif
