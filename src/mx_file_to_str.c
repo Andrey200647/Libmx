@@ -5,6 +5,9 @@ char *mx_file_to_str(const char *file) {
 	char *n_line;
 	int j = 0;
 
+//	if(!file) {
+//	    return NULL;
+//	}
 	int filedesc = open(file, O_RDONLY);
 	int i = 0;
 

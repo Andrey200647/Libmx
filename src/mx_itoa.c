@@ -1,7 +1,7 @@
 #include "libmx.h"
 
 char *mx_itoa(int number) {
-    
+
     long num = number;
     long num1 = number;
     int length = 0;
@@ -9,7 +9,6 @@ char *mx_itoa(int number) {
     int i = 0;
     bool is_negative = false;
     int begin;
-    int end = length;
 
     if (num == 0)
         return "0";
@@ -38,6 +37,8 @@ char *mx_itoa(int number) {
         result[i] = temp;
     }
 
+    int end = length;
+
     if (is_negative) {
         for(begin = 1; begin < end; begin++){
             mx_swap_char(&result[begin], &result[end]);
@@ -52,14 +53,10 @@ char *mx_itoa(int number) {
             end --;
         }
         result++;
-        result[length] = '\0';        
+        result[length] = '\0';
     }
 
     return result;
 }
 
-// int main() {
-//     char *test = mx_itoa(-2147483648);
-//     printf("%s\n", test);
-//     return 0;
-// }
+

@@ -75,5 +75,13 @@ int mx_toupper(int c);
 int mx_strncmp(const char *s1, const char *s2, int n);
 void mx_print_unicode(wchar_t c);
 int mx_nbr_length(int num);
+void mx_printerr(const char*s);
+char *mx_file_to_str(const char *file);
+int mx_atoi(const char *str);
+char *mx_read_one_line(int file);
+void mx_del_not_alphabet(char *string);
+bool mx_in_alphabet(char a);
+bool mx_is_number(char a);
+
 
 #endif

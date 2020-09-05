@@ -10,6 +10,7 @@ static bool space(char a) {
 char *mx_del_extra_spaces(const char *str) {
 	int x = 0;
 	char *result = mx_strnew(mx_strlen(str));
+	free(result);
 	char *result2 = mx_strtrim(str);
 
 	for (int i = 0; result2[i]; i++) {
@@ -30,8 +31,8 @@ char *mx_del_extra_spaces(const char *str) {
 
 // int main(){
 // 	char name[] = "\f    My name...    is  \t  \r   Neo    \t\n";
-// 	printf("%s", mx_del_extra_spaces(name));
-// 	//mx_del_extra_spaces(name);
+// 	//printf("%s", mx_del_extra_spaces(name));
+// 	mx_del_extra_spaces(name);
 // 		system("leaks -q a.out");
 // 	return 0;
 // }

@@ -3,18 +3,22 @@
 int mx_count_substr(const char *str, const char *sub) {
   	int i = 0;
   	
-  		while (str != NULL) {
-  			str = mx_strstr(str, sub);
-  			if (str != NULL) {
-  				i++;
-  				str++;
-  			}
-  		}
+      if (str == NULL || sub == NULL) 
+        return -1;
+      if (mx_strlen(sub) <= 0)
+        return 0;
+
+  		while (*str) {
+  		    if (mx_memcmp(str, sub, mx_strlen(sub)) == 0) {
+            i++;
+          }
+          str++;
+    }
   	return i;
 }
 
 // int main(){
-// 	char str[] = {"yo", "yo", "yo Neo", NULL};
-// 	char sub[] = {"yo", NULL};
+// 	char str[] = "yo, yo, yo Neo";
+// 	char sub[] = "yo";
 // 	printf("%d\n", mx_count_substr(str, sub));
 // }

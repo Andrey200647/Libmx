@@ -1,25 +1,39 @@
 #include "libmx.h"
-
-char **mx_strsplit(const char *s, char c){
-    int arr = mx_count_words(s, c);
-    char **result = (char **) malloc(sizeof(char *) * (arr + 1)); //videlaem pamat
-    result[arr] = 0;
-
-    if (s == 0)
-        return 0;
-    for (int p = 0; p < arr; p++) {
-        while (*s == c) {
-            s++;
+char **mx_strsplit(const char *s, char c) {
+    char *str = (char *)s;
+    int number_of_words = mx_count_words(str, c);
+    char **arr = malloc((number_of_words + 1) * 8);
+    int index_in_arr = 0;
+    int temp_len = 0;
+    char *temp_str;
+    while (*str != '\0') {
+        while (*str == c && *str != '\0')
+            str++;
+        if (*str == '\0')
+            break;
+        while (*str != c && *str != '\0') {
+            str++;
+            temp_len++;
         }
-        char *i = (char *) s;
-        int j = 0;
-        while (*s != c) {
-            j++;
-            s++;
+        if (*str == '\0')
+            break;
+        temp_str = mx_strnew(temp_len);
+        str -= temp_len;
+        for (int i = 0; i < temp_len; i++) {
+            temp_str[i] = *str++;
         }
-        char *word = mx_strnew(j);
-        mx_strncpy(word, i, j);
-        result[p] = word;
+        arr[index_in_arr] = temp_str;
+        index_in_arr++;
+        temp_len = 0;
     }
-    return result;
+    arr[number_of_words] = NULL;
+    return arr;
 }
+//int main() {
+//    char *str = "**Good buy,**Mr.*Anderson**";
+//    char **array = mx_strsplit(str, '*');
+//    printf("%s\n", array[0]);
+//    printf("%s\n", array[1]);
+//    printf("%s\n", array[2]);
+//    printf("%s\n", array[3]);
+//}

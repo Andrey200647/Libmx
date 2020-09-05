@@ -3,23 +3,26 @@
 void  *mx_memmove(void *dst, const void *src, size_t len) {
 	char *to = dst;
 	const char *sourse = src;
-	size_t i;
+	 const char *i;
+	char *j;
 	
-	 if (len == 0)
+	
+	 if (len < 0)
         return NULL;
 
-	if(to <= sourse){
-		for(i = 0; i < len; i++){
-			to[i] = sourse[i];
-		}
+	if (to < sourse) {
+		while (len--)
+			*to++ = *sourse++;
 	}
 	else {
-		for (i = len; i > 0; i--){
-			to[i] = sourse[i];
-		}
+	    i = sourse + (len - 1);
+        j = to + (len - 1);
+        while (len--)
+            *j-- = *i--;
 	}
-	return to;	
+	return (dst);	
 }
+
 // int main(){
 // 	char src[] = "**********************";
 // 	char dst[] = "++++++++++++++++++++++";

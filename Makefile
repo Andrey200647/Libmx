@@ -14,13 +14,14 @@ INC_FILES = $(wildcard $(INC_DIR)/*.h)
 CC = clang
 
 CFLAGS = -std=c11 $(addprefix -W, all extra error pedantic) -g
-AR = ar
-AFLAGS = rcs
+AR = ar rcs
 MKDIR = mkdir -p
 RM = rm -rf
-all: $(NAME)
+all: premake $(NAME)
+
+premake:
 $(NAME): $(OBJ_FILES)
-	@$(AR) $(AFLAGS) $@ $^
+	@$(AR) $@ $^
 	@printf "\r\33[2K$@\t \033[32;1mcreated\033[0m\n"
 $(OBJ_FILES): | $(OBJ_DIR)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_FILES)
